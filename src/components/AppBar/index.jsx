@@ -1,5 +1,5 @@
 import Box from '@mui/material/Box'
-import DarkMode from '../../components/DarkMode'
+import DarkMode from '~/components/DarkMode'
 function AppBar() {
   return (
     <>
