@@ -6,6 +6,7 @@ import Divider from '@mui/material/Divider'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import { Avatar, IconButton, Tooltip } from '@mui/material'
 import { Logout, PersonAdd, Settings } from '@mui/icons-material'
+import avatar from '~/assets/anhcv2.jpg'
 
 function Profile() {
   const [anchorEl, setAnchorEl] = React.useState(null)
@@ -28,7 +29,9 @@ function Profile() {
           aria-haspopup="true"
           aria-expanded={open ? 'true' : undefined}
         >
-          <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+          <Avatar src={avatar} sx={{ width: 32, height: 32 }}>
+            M
+          </Avatar>
         </IconButton>
       </Tooltip>
       <Menu

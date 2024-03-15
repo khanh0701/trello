@@ -8,8 +8,8 @@ import WorkSpaces from './Menus/WorkSpaces'
 import Recent from './Menus/Recent'
 import Starred from './Menus/Starred'
 import Templates from './Menus/Templates'
-import NotificationsIcon from '@mui/icons-material/Notifications'
-import HelpIcon from '@mui/icons-material/Help'
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
 import Profile from './Menus/Profile'
 
 function AppBar() {
@@ -28,7 +28,7 @@ function AppBar() {
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
           <AppsIcon sx={{ color: 'primary.main' }} />
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-            <SvgIcon component={logoTrello} inheritViewBox sx={{ color: 'primary.main' }} />
+            <SvgIcon component={logoTrello} inheritViewBox fontSize="small" sx={{ color: 'primary.main' }} />
             <Typography variant="span" sx={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'primary.main' }}>
               Trello
             </Typography>
@@ -44,12 +44,12 @@ function AppBar() {
           <DarkMode />
           <Tooltip title="Notifications" sx={{ mr: 1 }}>
             <Badge badgeContent={17} color="secondary">
-              <NotificationsIcon />
+              <NotificationsNoneIcon sx={{ color: 'primary.main' }} />
             </Badge>
           </Tooltip>
           <Tooltip title="Help">
             <Badge badgeContent={17} color="secondary">
-              <HelpIcon />
+              <HelpOutlineIcon sx={{ color: 'primary.main' }} />
             </Badge>
           </Tooltip>
           <Profile />
