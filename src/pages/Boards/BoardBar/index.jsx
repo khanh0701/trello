@@ -10,12 +10,12 @@ import avatar from '~/assets/anhcv2.jpg'
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt'
 
 const MenuStyle = {
-  color: 'primary.main',
-  bgcolor: 'white',
+  color: 'white',
+  bgcolor: 'transparent',
   border: 'none',
   paddingX: '5px',
   borderRadius: '4px',
-  '& .MuiSvgIcon-root': { color: 'primary.main' },
+  '.MuiSvgIcon-root': { color: 'white' },
   '&:hover': { bgcolor: 'primary.50' },
 }
 
@@ -32,7 +32,8 @@ function BoardBar() {
           gap: 2,
           paddingX: 2,
           overflowX: 'auto',
-          borderTop: '1px solid #00bfa5',
+          bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#34495e' : '#1976d2'),
+          borderBottom: '1px solid white',
         }}
       >
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -43,13 +44,13 @@ function BoardBar() {
           <Chip sx={MenuStyle} icon={<FilterListIcon />} label="Filter" clickable />
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <Button variant="outlined" startIcon={<PersonAddAltIcon />}>
+          <Button sx={{ color: 'white', borderColor: 'white', '&:hover': { borderColor: '#bdc3c7' } }} variant="outlined" startIcon={<PersonAddAltIcon />}>
             Invite
           </Button>
           <AvatarGroup
             max={4}
             sx={{
-              '& .MuiAvatar-root': { width: '34px', height: '34px', fontSize: 16 },
+              '& .MuiAvatar-root': { width: '34px', height: '34px', fontSize: 16, color: 'white', border: '0.5px solid ' },
             }}
           >
             <Tooltip title="Mr. K Dev">
