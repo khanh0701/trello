@@ -4,7 +4,8 @@ import Card from './Card/Card'
 const COLUMN_HEADER_HEIGHT = '50px'
 const COLUMN_FOOTER_HEIGHT = '56px'
 
-function ListCards() {
+function ListCards({ cards }) {
+  console.log(cards)
   return (
     <Box
       sx={{
@@ -25,7 +26,9 @@ function ListCards() {
         },
       }}
     >
-      <Card />
+      {cards?.map((card) => (
+        <Card key={card._id} card={card} />
+      ))}
     </Box>
   )
 }

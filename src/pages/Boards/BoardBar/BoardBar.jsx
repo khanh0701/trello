@@ -8,6 +8,7 @@ import Avatar from '@mui/material/Avatar'
 import AvatarGroup from '@mui/material/AvatarGroup'
 import avatar from '~/assets/anhcv2.jpg'
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt'
+import { capitalizeFirstLetter } from '~/utils/formatter'
 
 const MenuStyle = {
   color: 'white',
@@ -19,7 +20,7 @@ const MenuStyle = {
   '&:hover': { bgcolor: 'primary.50' },
 }
 
-function BoardBar() {
+function BoardBar({ board }) {
   return (
     <>
       <Box
@@ -36,8 +37,8 @@ function BoardBar() {
         }}
       >
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-          <Chip sx={MenuStyle} icon={<DashboardIcon />} label=" Mr. K Dev" clickable />
-          <Chip sx={MenuStyle} icon={<VpnLockIcon />} label="Pullic/Private Workspaces" clickable />
+          <Chip sx={MenuStyle} icon={<DashboardIcon />} label={board?.title} clickable />
+          <Chip sx={MenuStyle} icon={<VpnLockIcon />} label={capitalizeFirstLetter(board?.type)} clickable />
           <Chip sx={MenuStyle} icon={<AddToDriveIcon />} label="Add To Google Drive" clickable />
           <Chip sx={MenuStyle} icon={<AnimationIcon />} label="Automation" clickable />
           <Chip sx={MenuStyle} icon={<FilterListIcon />} label="Filter" clickable />

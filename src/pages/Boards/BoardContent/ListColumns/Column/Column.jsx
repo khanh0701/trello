@@ -17,11 +17,22 @@ import DragHandleIcon from '@mui/icons-material/DragHandle'
 import { Tooltip } from '@mui/material'
 import { useState } from 'react'
 import ListCards from './ListCards/ListCards'
+import { mapOrder } from '~/utils/sorts'
+import { useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
 
 const COLUMN_HEADER_HEIGHT = '50px'
 const COLUMN_FOOTER_HEIGHT = '56px'
 
-function Column() {
+function Column({ column }) {
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: column._id, data: { ...column } })
+
+  const DndKitColumnStyles = {
+    // touchAction: 'none',
+    transform: CSS.Translate.toString(transform),
+    transition,
+  }
+
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
   const handleClick = (event) => {
@@ -30,10 +41,20 @@ function Column() {
   const handleClose = () => {
     setAnchorEl(null)
   }
+
+  const orderedCards = mapOrder(column?.columns, column?.cardOrderIds, '_id')
+  console.log('column', column)
+
+  console.log('orderedCards', orderedCards)
   return (
     <Box
+      ref={setNodeRef}
+      style={DndKitColumnStyles}
+      {...attributes}
+      {...listeners}
       sx={{
-        width: '300px',
+        minWidth: '300px',
+        maxWidth: '300px',
         bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#333643' : '#ebecf0'),
         ml: 2,
         borderRadius: '6px',
@@ -43,7 +64,7 @@ function Column() {
     >
       <Box sx={{ height: COLUMN_HEADER_HEIGHT, p: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Typography variant="h6" sx={{ fontSize: '1.2rem', fontWeight: 'bold', cursor: 'pointer' }}>
-          Column
+          {column?.title}
         </Typography>
         <Box>
           <Tooltip title="More options">
@@ -107,7 +128,7 @@ function Column() {
           </Menu>
         </Box>
       </Box>
-      <ListCards />
+      <ListCards cards={orderedCards} />
       <Box sx={{ height: COLUMN_FOOTER_HEIGHT, p: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Button startIcon={<AddCardIcon />}>Add new card</Button>
         <Tooltip title="drag to move">
