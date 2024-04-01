@@ -2,12 +2,7 @@
 // Sample Eslint config for React project
 module.exports = {
   env: { browser: true, es2020: true, node: true },
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
-    'plugin:react-hooks/recommended',
-  ],
+  extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:react/jsx-runtime', 'plugin:react-hooks/recommended'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
   plugins: ['react', 'react-hooks', 'react-refresh'],
@@ -29,6 +24,7 @@ module.exports = {
 
     // common
     'no-console': 1,
+    'no-extra-boolean-cast': 0,
     'no-lonely-if': 1,
     'no-unused-vars': 1,
     'no-trailing-spaces': 1,
